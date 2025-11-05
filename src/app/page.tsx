@@ -23,7 +23,7 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
       <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden rounded-2xl sm:rounded-3xl my-4 sm:my-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/80 z-10 rounded-2xl sm:rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30 z-10 rounded-2xl sm:rounded-3xl"></div>
         
         {/* Background image slideshow with enhanced styling */}
         {backgroundImages.map((image, index) => (
@@ -43,7 +43,7 @@ export default function Home() {
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] to-[#b8860b]">
             VIBYN
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl mb-6 sm:mb-10 tracking-wide font-light text-black/90">
+          <p className="text-base sm:text-lg md:text-2xl mb-6 sm:mb-10 tracking-wide font-light text-white">
             Your Vibe. Your Identity.
           </p>
           <Link 
@@ -56,8 +56,8 @@ export default function Home() {
         
         {/* Enhanced scroll indicator */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce flex flex-col items-center">
-          <span className="text-xs sm:text-sm mb-2 tracking-widest text-[#d4af37]/80">EXPLORE</span>
-          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span className="text-xs sm:text-sm mb-2 tracking-widest text-white/80">EXPLORE</span>
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>
