@@ -34,7 +34,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <SidebarProvider>
-          <LayoutContent children={children} />
+          <LayoutContent>{children}</LayoutContent>
         </SidebarProvider>
       </body>
     </html>
