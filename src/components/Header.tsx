@@ -3,143 +3,120 @@
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
-import { useSidebar } from "@/context/SidebarContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isSidebarCollapsed, toggleSidebar } = useSidebar();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   
   return (
-    <>
-      {/* Mobile menu button */}
-      <button 
-        className="md:hidden fixed top-4 left-4 z-50 text-[#d4af37] focus:outline-none bg-white p-2 rounded-lg shadow-lg"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-        </svg>
-      </button>
+    <header className="bg-white text-black sticky top-0 z-50 shadow-sm">
+      <div className="container mx-auto px-4">
+        {/* Top bar with shipping info */}
+        <div className="hidden md:flex justify-center py-2 text-sm bg-gray-100">
+          <p className="text-gray-600">Free shipping on orders over £50</p>
+        </div>
+        
+        {/* Main navigation */}
+        <div className="flex items-center justify-between py-4">
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden text-black focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
 
-      {/* Sidebar for desktop and mobile navigation */}
-      <header className={`bg-white text-black fixed top-0 left-0 h-full z-40 border-r border-gray-200 shadow-2xl hidden md:block transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'}`}>
-        <div className="flex flex-col h-full p-6">
-          {/* Logo and toggle button */}
-          <div className="mb-8 mt-4">
-            <div className="flex items-center justify-between">
-              {!isSidebarCollapsed && (
-                <Link href="/" className="hover:opacity-80 transition-opacity flex items-center">
-                  <div className="relative rounded-full border-2 border-[#d4af37] p-1">
-                    <Image 
-                      src="/OUR.png" 
-                      alt="VIBYN Logo" 
-                      width={60} 
-                      height={60} 
-                      className="object-contain rounded-full"
-                    />
-                  </div>
-                  <span className="ml-3 text-2xl font-bold tracking-wider text-[#d4af37]">VIBYN</span>
-                </Link>
-              )}
-              <button 
-                onClick={toggleSidebar}
-                className="text-[#d4af37] hover:text-[#b8860b] transition-colors focus:outline-none"
-                aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 transition-transform duration-300 ${isSidebarCollapsed ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-            </div>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="hover:opacity-80 transition-opacity flex items-center">
+              <div className="relative rounded-full border-2 border-[#d4af37] p-1">
+                <Image 
+                  src="/OUR.png" 
+                  alt="VIBYN Logo" 
+                  width={50} 
+                  height={50} 
+                  className="object-contain rounded-full"
+                />
+              </div>
+              <span className="ml-2 text-2xl font-bold tracking-wider text-[#d4af37] hidden sm:block">VIBYN</span>
+            </Link>
           </div>
-          
-          {/* Navigation */}
-          <nav className="flex-grow">
-            <ul className="space-y-6">
-              <li>
-                <Link href="/" className={`flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group ${isSidebarCollapsed ? 'justify-center' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37] group-hover:text-black transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                  <span className={`${isSidebarCollapsed ? 'hidden' : 'ml-3 font-medium'}`}>Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop" className={`flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group ${isSidebarCollapsed ? 'justify-center' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37] group-hover:text-black transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  <span className={`${isSidebarCollapsed ? 'hidden' : 'ml-3 font-medium'}`}>Shop</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/dtf-design" className={`flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group ${isSidebarCollapsed ? 'justify-center' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37] group-hover:text-black transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                  </svg>
-                  <span className={`${isSidebarCollapsed ? 'hidden' : 'ml-3 font-medium'}`}>DTF Designs</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className={`flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group ${isSidebarCollapsed ? 'justify-center' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37] group-hover:text-black transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className={`${isSidebarCollapsed ? 'hidden' : 'ml-3 font-medium'}`}>About</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className={`flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group ${isSidebarCollapsed ? 'justify-center' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37] group-hover:text-black transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span className={`${isSidebarCollapsed ? 'hidden' : 'ml-3 font-medium'}`}>Contact</span>
-                </Link>
-              </li>
-            </ul>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
+            <Link href="/shop" className="font-medium hover:text-[#d4af37] transition-colors">SHOP</Link>
+            <Link href="/shop?category=tshirts" className="font-medium hover:text-[#d4af37] transition-colors">T-SHIRTS</Link>
+            <Link href="/shop?category=hoodies" className="font-medium hover:text-[#d4af37] transition-colors">HOODIES</Link>
+            <Link href="/dtf-design" className="font-medium hover:text-[#d4af37] transition-colors">DTF DESIGNS</Link>
+            <Link href="/about" className="font-medium hover:text-[#d4af37] transition-colors">ABOUT</Link>
           </nav>
-          
+
           {/* Icons */}
-          <div className={`flex ${isSidebarCollapsed ? 'flex-col items-center space-y-6 py-4' : 'justify-center space-x-6'} pt-6 border-t border-gray-200`}>
-            <button className="hover:text-[#d4af37] transition-colors" aria-label="Search">
+          <div className="flex items-center space-x-5">
+            <button 
+              className="text-black hover:text-[#d4af37] transition-colors hidden sm:block"
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              aria-label="Search"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-            <Link href="/cart" className="hover:text-[#d4af37] transition-colors relative" aria-label="Cart">
+            
+            <Link href="/cart" className="text-black hover:text-[#d4af37] transition-colors relative" aria-label="Cart">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <span className="absolute -top-2 -right-2 bg-[#d4af37] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
+              <span className="absolute -top-2 -right-2 bg-[#d4af37] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
             </Link>
-            <button className="hover:text-[#d4af37] transition-colors" aria-label="Account">
+            
+            <button className="text-black hover:text-[#d4af37] transition-colors hidden sm:block" aria-label="Account">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </button>
           </div>
         </div>
-      </header>
+
+        {/* Search bar */}
+        {isSearchOpen && (
+          <div className="py-4 border-t border-gray-200">
+            <div className="flex">
+              <input 
+                type="text" 
+                placeholder="Search products..." 
+                className="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+                aria-label="Search products"
+              />
+              <button className="bg-[#d4af37] text-black px-6 py-2 rounded-r-lg font-medium hover:bg-[#b8860b] transition-colors">
+                Search
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Mobile menu overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-30 bg-white bg-opacity-90" onClick={() => setIsMenuOpen(false)}>
-          <div className="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white text-black z-40 border-r border-gray-200 shadow-2xl">
+        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={() => setIsMenuOpen(false)}>
+          <div className="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white text-black z-50 shadow-2xl">
             <div className="flex flex-col h-full p-6">
               {/* Logo */}
-              <div className="mb-12 mt-4">
+              <div className="mb-10 mt-4">
                 <Link href="/" className="hover:opacity-80 transition-opacity flex items-center" onClick={() => setIsMenuOpen(false)}>
                   <div className="relative rounded-full border-2 border-[#d4af37] p-1">
                     <Image 
                       src="/OUR.png" 
                       alt="VIBYN Logo" 
-                      width={60} 
-                      height={60} 
+                      width={50} 
+                      height={50} 
                       className="object-contain rounded-full"
                     />
                   </div>
-                  <span className="ml-3 text-2xl font-bold tracking-wider text-[#d4af37]">VIBYN</span>
+                  <span className="ml-2 text-2xl font-bold tracking-wider text-[#d4af37]">VIBYN</span>
                 </Link>
               </div>
               
@@ -147,71 +124,68 @@ export default function Header() {
               <nav className="flex-grow">
                 <ul className="space-y-6">
                   <li>
-                    <Link href="/" className="flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group" onClick={() => setIsMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#d4af37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                      </svg>
-                      <span className="font-medium">Home</span>
+                    <Link href="/" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      Home
                     </Link>
                   </li>
                   <li>
-                    <Link href="/shop" className="flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group" onClick={() => setIsMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#d4af37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                      <span className="font-medium">Shop</span>
+                    <Link href="/shop" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      Shop
                     </Link>
                   </li>
                   <li>
-                    <Link href="/dtf-design" className="flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group" onClick={() => setIsMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#d4af37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                      </svg>
-                      <span className="font-medium">DTF Designs</span>
+                    <Link href="/shop?category=tshirts" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      T-Shirts
                     </Link>
                   </li>
                   <li>
-                    <Link href="/about" className="flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group" onClick={() => setIsMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#d4af37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span className="font-medium">About</span>
+                    <Link href="/shop?category=hoodies" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      Hoodies
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" className="flex items-center py-3 px-4 rounded-lg hover:bg-[#f5f5f5] transition-all duration-300 group" onClick={() => setIsMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#d4af37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <span className="font-medium">Contact</span>
+                    <Link href="/dtf-design" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      DTF Designs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/about" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="block py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                      Contact
                     </Link>
                   </li>
                 </ul>
               </nav>
               
               {/* Mobile Icons */}
-              <div className="flex justify-center space-x-8 pt-6 border-t border-gray-200 mt-6">
-                <button className="hover:text-[#d4af37] transition-colors" aria-label="Search">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
-                <Link href="/cart" className="hover:text-[#d4af37] transition-colors relative" aria-label="Cart" onClick={() => setIsMenuOpen(false)}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  <span className="absolute -top-2 -right-2 bg-[#d4af37] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
-                </Link>
-                <button className="hover:text-[#d4af37] transition-colors" aria-label="Account">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </button>
+              <div className="pt-6 border-t border-gray-200 mt-6">
+                <div className="flex justify-between">
+                  <button className="text-black hover:text-[#d4af37] transition-colors" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </button>
+                  <Link href="/cart" className="text-black hover:text-[#d4af37] transition-colors relative" aria-label="Cart" onClick={() => setIsMenuOpen(false)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span className="absolute -top-2 -right-2 bg-[#d4af37] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                  </Link>
+                  <button className="text-black hover:text-[#d4af37] transition-colors" aria-label="Account">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }

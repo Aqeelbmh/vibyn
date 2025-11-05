@@ -12,11 +12,13 @@ interface Product {
   category: string;
   isNew?: boolean;
   isOnSale?: boolean;
+  colors: string[];
 }
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("featured");
+  const [selectedColor, setSelectedColor] = useState<string>("all");
   
   // Sample products data
   const products: Product[] = [
@@ -26,14 +28,16 @@ export default function ShopPage() {
       price: 29.99,
       image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800",
       category: "tshirts",
-      isNew: true
+      isNew: true,
+      colors: ["Black", "White", "Grey"]
     },
     {
       id: 2,
       name: "Urban Hoodie",
       price: 59.99,
       image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800",
-      category: "hoodies"
+      category: "hoodies",
+      colors: ["Black", "Grey"]
     },
     {
       id: 3,
@@ -42,21 +46,24 @@ export default function ShopPage() {
       originalPrice: 34.99,
       image: "https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?q=80&w=800",
       category: "dtf",
-      isOnSale: true
+      isOnSale: true,
+      colors: ["Black", "White"]
     },
     {
       id: 4,
       name: "Signature Hoodie",
       price: 64.99,
       image: "https://images.unsplash.com/photo-1546439874-0cdea0a09631?q=80&w=800",
-      category: "hoodies"
+      category: "hoodies",
+      colors: ["Black", "Grey", "Brown"]
     },
     {
       id: 5,
       name: "Minimalist Tee",
       price: 24.99,
       image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=800",
-      category: "tshirts"
+      category: "tshirts",
+      colors: ["Black", "White"]
     },
     {
       id: 6,
@@ -64,104 +71,121 @@ export default function ShopPage() {
       price: 69.99,
       image: "https://images.unsplash.com/photo-1593030103066-0093718efeb9?q=80&w=800",
       category: "hoodies",
-      isNew: true
+      isNew: true,
+      colors: ["Black", "Grey"]
     },
     {
       id: 7,
       name: "Custom DTF Print",
       price: 32.99,
       image: "https://images.unsplash.com/photo-1606109008399-150715617d12?q=80&w=800",
-      category: "dtf"
+      category: "dtf",
+      colors: ["Black", "White", "Grey"]
     },
     {
       id: 8,
       name: "Essential Crew Neck",
       price: 39.99,
       image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=800",
-      category: "tshirts"
+      category: "tshirts",
+      colors: ["Black", "White", "Grey"]
     }
   ];
 
-  // Filter products based on selected category
-  const filteredProducts = selectedCategory === "all" 
-    ? products 
-    : products.filter(product => product.category === selectedCategory);
+  // Get unique categories and colors
+  const categories = ["all", ...new Set(products.map(product => product.category))];
+  const colors = ["all", ...new Set(products.flatMap(product => product.colors))];
+
+  // Filter products based on selected category and color
+  const filteredProducts = products.filter(product => {
+    const categoryMatch = selectedCategory === "all" || product.category === selectedCategory;
+    const colorMatch = selectedColor === "all" || product.colors.includes(selectedColor);
+    return categoryMatch && colorMatch;
+  });
 
   return (
-    <div className="min-h-screen bg-white text-black py-12">
+    <div className="min-h-screen bg-white text-black py-8">
       <div className="container mx-auto px-4">
         {/* Page Header */}
-        <div className="mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider text-[#d4af37]">SHOP COLLECTION</h1>
-          <p className="text-gray-700 max-w-2xl mx-auto text-lg">
+        <div className="mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-wide text-[#0a0a0a]">ALL PRODUCTS</h1>
+          <p className="text-gray-600 max-w-2xl">
             Discover our premium streetwear collection featuring high-quality tees, hoodies, and custom DTF designs.
           </p>
         </div>
 
-        {/* Filters and Sorting */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
-          {/* Category Filters */}
+        {/* Filters */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
           <div className="flex flex-wrap gap-3">
-            <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "all" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
-              onClick={() => setSelectedCategory("all")}
-            >
-              ALL
-            </button>
-            <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "tshirts" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
-              onClick={() => setSelectedCategory("tshirts")}
-            >
-              T-SHIRTS
-            </button>
-            <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "hoodies" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
-              onClick={() => setSelectedCategory("hoodies")}
-            >
-              HOODIES
-            </button>
-            <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "dtf" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
-              onClick={() => setSelectedCategory("dtf")}
-            >
-              DTF DESIGNS
-            </button>
+            <span className="font-medium text-gray-700">Category:</span>
+            {categories.map((category) => (
+              <button 
+                key={category}
+                className={`px-4 py-2 rounded-full font-medium text-sm ${
+                  selectedCategory === category 
+                    ? "bg-[#d4af37] text-black" 
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category.toUpperCase()}
+              </button>
+            ))}
           </div>
 
-          {/* Sorting */}
+          <div className="flex flex-wrap gap-3">
+            <span className="font-medium text-gray-700">Color:</span>
+            {colors.map((color) => (
+              <button 
+                key={color}
+                className={`px-4 py-2 rounded-full font-medium text-sm ${
+                  selectedColor === color 
+                    ? "bg-[#d4af37] text-black" 
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+                onClick={() => setSelectedColor(color)}
+              >
+                {color.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
           <div className="flex items-center gap-3">
-            <span className="text-gray-700 font-medium">SORT BY:</span>
+            <span className="text-gray-700 font-medium">Sort by:</span>
             <select 
-              className="bg-white text-black border border-gray-300 rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#d4af37] font-medium"
+              className="bg-white text-black border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4af37] font-medium text-sm"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               aria-label="Sort products by"
             >
-              <option value="featured">FEATURED</option>
-              <option value="price-low">PRICE: LOW TO HIGH</option>
-              <option value="price-high">PRICE: HIGH TO LOW</option>
-              <option value="newest">NEWEST ARRIVALS</option>
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest Arrivals</option>
             </select>
           </div>
         </div>
 
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-32">
-            <h3 className="text-2xl font-bold mb-6 text-[#d4af37]">NO PRODUCTS FOUND</h3>
-            <p className="text-gray-600 mb-10">Try selecting a different category</p>
+          <div className="text-center py-20">
+            <h3 className="text-2xl font-bold mb-4 text-[#0a0a0a]">NO PRODUCTS FOUND</h3>
+            <p className="text-gray-600 mb-8">Try selecting different filters</p>
             <button 
-              className="bg-[#d4af37] text-white px-8 py-4 rounded-full font-medium hover:bg-[#b8860b] transition-colors tracking-wider"
-              onClick={() => setSelectedCategory("all")}
+              className="bg-[#d4af37] text-black px-6 py-3 rounded-full font-bold hover:bg-[#b8860b] transition-colors"
+              onClick={() => {
+                setSelectedCategory("all");
+                setSelectedColor("all");
+              }}
             >
-              VIEW ALL PRODUCTS
+              RESET FILTERS
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="relative overflow-hidden rounded-2xl mb-6 border border-gray-200">
+                <div className="relative overflow-hidden rounded-lg mb-4">
                   <div 
                     className="h-80 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                     style={{ backgroundImage: `url('${product.image}')` }}
@@ -169,19 +193,19 @@ export default function ShopPage() {
                   
                   {/* Badges */}
                   {product.isNew && (
-                    <div className="absolute top-4 right-4 bg-[#d4af37] text-white text-sm font-bold px-4 py-2 rounded-full tracking-wider">
+                    <div className="absolute top-3 left-3 bg-[#d4af37] text-black text-xs font-bold px-3 py-1 rounded-full">
                       NEW
                     </div>
                   )}
                   {product.isOnSale && (
-                    <div className="absolute top-4 right-4 bg-red-600 text-white text-sm font-bold px-4 py-2 rounded-full tracking-wider">
+                    <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                       SALE
                     </div>
                   )}
                   
                   {/* Quick Add to Cart */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:bg-opacity-20">
-                    <button className="bg-[#d4af37] text-white px-8 py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0 tracking-wider">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:bg-opacity-30">
+                    <button className="bg-[#d4af37] text-black px-6 py-2 rounded-full font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
                       QUICK ADD
                     </button>
                   </div>
@@ -189,6 +213,11 @@ export default function ShopPage() {
                 
                 <Link href={`/product/${product.id}`} className="block">
                   <h3 className="font-bold text-lg mb-1 text-black">{product.name}</h3>
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {product.colors.map((color) => (
+                      <span key={color} className="w-4 h-4 rounded-full border border-gray-300" style={{ backgroundColor: color.toLowerCase() }}></span>
+                    ))}
+                  </div>
                   <p className="text-gray-700">
                     {product.originalPrice && (
                       <>
@@ -204,8 +233,8 @@ export default function ShopPage() {
         )}
 
         {/* Load More Button */}
-        <div className="text-center mt-20">
-          <button className="border-2 border-[#d4af37] text-[#d4af37] px-10 py-4 rounded-full font-medium hover:bg-[#d4af37] hover:text-white transition-colors tracking-wider">
+        <div className="text-center mt-16">
+          <button className="border-2 border-[#d4af37] text-[#d4af37] px-8 py-3 rounded-full font-bold hover:bg-[#d4af37] hover:text-black transition-colors">
             LOAD MORE
           </button>
         </div>
