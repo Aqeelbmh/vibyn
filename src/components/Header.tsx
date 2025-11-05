@@ -124,8 +124,8 @@ export default function Header() {
 
       {/* Mobile menu overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-30 bg-[#0a0a0a] bg-opacity-75" onClick={() => setIsMenuOpen(false)}>
-          <div className="fixed top-0 left-0 h-full w-64 bg-[#0a0a0a] text-[#f0f0f0] z-40 border-r border-[#333333] shadow-2xl">
+        <div className="md:hidden fixed inset-0 z-30 bg-[#0a0a0a] bg-opacity-90" onClick={() => setIsMenuOpen(false)}>
+          <div className="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-[#0a0a0a] text-[#f0f0f0] z-40 border-r border-[#333333] shadow-2xl">
             <div className="flex flex-col h-full p-6">
               {/* Logo */}
               <div className="mb-12 mt-4">
@@ -188,6 +188,26 @@ export default function Header() {
                   </li>
                 </ul>
               </nav>
+              
+              {/* Mobile Icons */}
+              <div className="flex justify-center space-x-8 pt-6 border-t border-[#333333] mt-6">
+                <button className="hover:text-[#d4af37] transition-colors" aria-label="Search">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+                <Link href="/cart" className="hover:text-[#d4af37] transition-colors relative" aria-label="Cart" onClick={() => setIsMenuOpen(false)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  <span className="absolute -top-2 -right-2 bg-[#d4af37] text-[#2c1810] text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                </Link>
+                <button className="hover:text-[#d4af37] transition-colors" aria-label="Account">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>

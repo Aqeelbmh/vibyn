@@ -29,6 +29,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom styles for VIBYN brand */
@@ -54,6 +56,12 @@ body {
   position: relative;
   z-index: 20;
   text-align: center;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Smooth animations */
@@ -147,13 +155,20 @@ input:focus, select:focus, textarea:focus {
 
 /* Section spacing */
 .section {
-  padding: 6rem 0;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 /* Premium typography */
 h1, h2, h3, h4 {
   letter-spacing: 0.05em;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 /* Border radius consistency */
@@ -261,5 +276,88 @@ h1, h2, h3, h4 {
   }
   50% {
     opacity: 0.8;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .premium-card {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+/* Tablet-specific optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2.25rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift:hover,
+  .luxury-link:hover,
+  .luxury-button:hover,
+  .card:hover {
+    transform: none;
+  }
+  
+  button, .button, .luxury-button {
+    transition: none;
   }
 }
