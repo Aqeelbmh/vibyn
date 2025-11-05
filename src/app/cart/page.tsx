@@ -47,7 +47,7 @@ export default function CartPage() {
   return (
     <div className="min-h-screen bg-white text-black py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-8 text-[#0a0a0a]">YOUR CART</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[#0a0a0a] text-center">YOUR CART</h1>
         
         {cartItems.length === 0 ? (
           <div className="text-center py-20">
@@ -177,7 +177,7 @@ export default function CartPage() {
                   <div className="flex justify-center space-x-4 mt-4">
                     <button className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-lg hover:border-[#d4af37] transition-colors" aria-label="PayPal">
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M7.2 18c-.3-.3-.5-.7-.5-1.2V8.5c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2l8.2 8.2V7.8c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2.3.3.5.7.5 1.2v8.3c0 .4-.3.8-.8 1-.4.2-.9.1-1.2-.2L9 9.1v8.1c0 .4-.3.8-.8 1-.4.2-.9.1-1.2-.2z"/>
+                        <path d="M7.2 18c-.3-.3-.5-.7-.5-1.2V8.5c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2l8.2 8.2V7.8c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2.3.3.5.7.5 1.2v8.3c0 .4-.3.8-.8 1-.4.2-.9.1-1.2-.2z"/>
                       </svg>
                     </button>
                     <button className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-lg hover:border-[#d4af37] transition-colors" aria-label="Apple Pay">

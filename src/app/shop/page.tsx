@@ -107,16 +107,16 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white text-black py-8">
       <div className="container mx-auto px-4">
         {/* Page Header */}
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-wide text-[#0a0a0a]">ALL PRODUCTS</h1>
-          <p className="text-gray-600 max-w-2xl">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Discover our premium streetwear collection featuring high-quality tees, hoodies, and custom DTF designs.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
-          <div className="flex flex-wrap gap-3">
+        <div className="flex flex-col md:flex-row justify-center items-center mb-10 gap-6">
+          <div className="flex flex-wrap gap-3 justify-center">
             <span className="font-medium text-gray-700">Category:</span>
             {categories.map((category) => (
               <button 
@@ -133,7 +133,7 @@ export default function ShopPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center">
             <span className="font-medium text-gray-700">Color:</span>
             {colors.map((color) => (
               <button 
@@ -172,7 +172,7 @@ export default function ShopPage() {
             <h3 className="text-2xl font-bold mb-4 text-[#0a0a0a]">NO PRODUCTS FOUND</h3>
             <p className="text-gray-600 mb-8">Try selecting different filters</p>
             <button 
-              className="bg-[#d4af37] text-black px-6 py-3 rounded-full font-bold hover:bg-[#b8860b] transition-colors"
+              className="bg-[#d4af37] text-black px-6 py-3 rounded-full font-bold hover:bg-[#b8860b] transition-colors mx-auto"
               onClick={() => {
                 setSelectedCategory("all");
                 setSelectedColor("all");

@@ -4,8 +4,8 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-white text-black py-20">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-5xl font-bold mb-12 tracking-widest text-[#d4af37]">PRIVACY POLICY</h1>
-        <p className="text-gray-700 mb-16 text-lg">Last updated: {new Date().toLocaleDateString(`en-GB`)}</p>
+        <h1 className="text-5xl font-bold mb-12 tracking-widest text-[#d4af37] text-center">PRIVACY POLICY</h1>
+        <p className="text-gray-700 mb-16 text-lg text-center">Last updated: {new Date().toLocaleDateString(`en-GB`)}</p>
         
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-8 leading-relaxed">

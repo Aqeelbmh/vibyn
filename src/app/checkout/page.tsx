@@ -66,7 +66,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-white text-black py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-8 text-[#0a0a0a]">CHECKOUT</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[#0a0a0a] text-center">CHECKOUT</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Checkout Form */}

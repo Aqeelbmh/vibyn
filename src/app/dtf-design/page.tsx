@@ -13,12 +13,14 @@ export default function DTFDesignPage() {
             Express your unique style with our custom Direct-to-Film printed apparel. 
             Turn your ideas into wearable art.
           </p>
-          <Link 
-            href="/shop?category=dtf" 
-            className="inline-block bg-[#d4af37] text-white px-10 py-4 text-lg font-bold rounded-full hover:bg-[#b8860b] transition-all tracking-wider"
-          >
-            SHOP DTF COLLECTION
-          </Link>
+          <div className="flex justify-center">
+            <Link 
+              href="/shop?category=dtf" 
+              className="inline-block bg-[#d4af37] text-white px-10 py-4 text-lg font-bold rounded-full hover:bg-[#b8860b] transition-all tracking-wider"
+            >
+              SHOP DTF COLLECTION
+            </Link>
+          </div>
         </div>
 
         {/* How It Works */}
@@ -66,11 +68,13 @@ export default function DTFDesignPage() {
 
         {/* Featured DTF Designs */}
         <div className="mb-28">
-          <div className="flex justify-between items-center mb-16">
-            <h2 className="text-4xl font-bold tracking-wider text-[#d4af37]">FEATURED DESIGNS</h2>
-            <Link href="/shop?category=dtf" className="text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium tracking-wider">
-              VIEW ALL →
-            </Link>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold tracking-wider text-[#d4af37] mb-6">FEATURED DESIGNS</h2>
+            <div className="flex justify-center">
+              <Link href="/shop?category=dtf" className="text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium tracking-wider luxury-link">
+                VIEW ALL →
+              </Link>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -122,7 +126,7 @@ export default function DTFDesignPage() {
         <div className="bg-gradient-to-r from-white to-gray-50 rounded-3xl p-12 mb-28 border border-gray-200">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-8 tracking-wider text-[#d4af37]">PRINT ON YOUR TEE</h2>
+              <h2 className="text-4xl font-bold mb-8 tracking-wider text-[#d4af37] text-center lg:text-left">PRINT ON YOUR TEE</h2>
               <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                 Have your own design? We can bring it to life on our premium garments using our advanced DTF printing technology. 
                 Whether it{`'`}s a personal logo, artwork, or custom text, we{`'`}ll ensure the highest quality print that lasts.

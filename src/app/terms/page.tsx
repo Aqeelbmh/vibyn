@@ -4,8 +4,8 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white text-black py-20">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-5xl font-bold mb-12 tracking-widest text-[#d4af37]">TERMS AND CONDITIONS</h1>
-        <p className="text-gray-700 mb-16 text-lg">Last updated: {new Date().toLocaleDateString(`en-GB`)}</p>
+        <h1 className="text-5xl font-bold mb-12 tracking-widest text-[#d4af37] text-center">TERMS AND CONDITIONS</h1>
+        <p className="text-gray-700 mb-16 text-lg text-center">Last updated: {new Date().toLocaleDateString(`en-GB`)}</p>
         
         <div className="prose prose-lg max-w-none">
           <h2 className="text-3xl font-bold mt-12 mb-6 tracking-wider text-[#d4af37]">1. INTRODUCTION</h2>
