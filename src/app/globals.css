@@ -1,26 +1,265 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f0f0f0;
+  --primary: #d4af37;
+  --primary-dark: #b8860b;
+  --secondary: #2c1810;
+  --accent: #8b4513;
+  --card-bg: #1a1a1a;
+  --border: #333333;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom styles for VIBYN brand */
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85) 0%, rgba(44, 24, 16, 0.95) 100%);
+  z-index: 10;
+  border-radius: 1.5rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+}
+
+/* Smooth animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8860b;
+}
+
+/* Button hover effects */
+button, .button {
+  transition: all 0.3s ease;
+}
+
+button:hover, .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Input focus effects */
+input, select, textarea {
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Product image hover */
+.product-image {
+  transition: all 0.5s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Section spacing */
+.section {
+  padding: 6rem 0;
+}
+
+/* Premium typography */
+h1, h2, h3, h4 {
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+/* Border radius consistency */
+.rounded-consistent {
+  border-radius: 1rem;
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--background) 100%);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+/* Luxury link styling */
+.luxury-link {
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.luxury-link:hover {
+  color: var(--primary-dark);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Luxury button styling */
+.luxury-button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--secondary);
+  border: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  border-radius: 9999px;
+}
+
+.luxury-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Premium shadows */
+.premium-shadow {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.premium-shadow-lg {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Elegant borders */
+.elegant-border {
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.elegant-border:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* Premium card styling */
+.premium-card {
+  background: rgba(26, 26, 26, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 1rem;
+}
+
+/* Animated background */
+.animated-bg {
+  background: linear-gradient(-45deg, #0a0a0a, #2c1810, #0a0a0a, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle pulse animation */
+.pulse-subtle {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }

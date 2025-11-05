@@ -1,0 +1,437 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+export default function CheckoutPage() {
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postcode: "",
+    country: "United Kingdom",
+    phone: "",
+    saveInfo: false,
+    createAccount: false,
+    password: "",
+    newsletter: true
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    console.log("Checkout submitted:", formData);
+    alert("Order placed successfully!");
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-white py-20">
+      <div className="container mx-auto px-4">
+        <h1 className="text-5xl font-bold mb-16 tracking-widest">CHECKOUT</h1>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Checkout Form */}
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-10">
+              {/* Contact Information */}
+              <div className="border border-gray-800 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold mb-8 tracking-wider">CONTACT INFORMATION</h2>
+                
+                <div className="mb-6">
+                  <label htmlFor="email" className="block text-lg font-medium mb-3 tracking-wider">EMAIL ADDRESS *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    name="newsletter"
+                    checked={formData.newsletter}
+                    onChange={handleChange}
+                    className="mr-3 h-6 w-6 text-white bg-gray-900 border-gray-700 rounded focus:ring-white"
+                  />
+                  <label htmlFor="newsletter" className="text-gray-300 text-lg">
+                    Email me with news and offers
+                  </label>
+                </div>
+              </div>
+              
+              {/* Shipping Address */}
+              <div className="border border-gray-800 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold mb-8 tracking-wider">SHIPPING ADDRESS</h2>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-lg font-medium mb-3 tracking-wider">FIRST NAME *</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-lg font-medium mb-3 tracking-wider">LAST NAME *</label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <label htmlFor="address" className="block text-lg font-medium mb-3 tracking-wider">ADDRESS *</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    placeholder="Street address"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label htmlFor="city" className="block text-lg font-medium mb-3 tracking-wider">CITY *</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      placeholder="City"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="postcode" className="block text-lg font-medium mb-3 tracking-wider">POSTCODE *</label>
+                    <input
+                      type="text"
+                      id="postcode"
+                      name="postcode"
+                      value={formData.postcode}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      placeholder="Postcode"
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <label htmlFor="country" className="block text-lg font-medium mb-3 tracking-wider">COUNTRY *</label>
+                  <select
+                    id="country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                  >
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                  </select>
+                </div>
+                
+                <div className="mb-6">
+                  <label htmlFor="phone" className="block text-lg font-medium mb-3 tracking-wider">PHONE (OPTIONAL)</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    placeholder="Phone number"
+                  />
+                </div>
+                
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="saveInfo"
+                    name="saveInfo"
+                    checked={formData.saveInfo}
+                    onChange={handleChange}
+                    className="mr-3 h-6 w-6 text-white bg-gray-900 border-gray-700 rounded focus:ring-white"
+                  />
+                  <label htmlFor="saveInfo" className="text-gray-300 text-lg">
+                    Save this information for next time
+                  </label>
+                </div>
+              </div>
+              
+              {/* Payment Method */}
+              <div className="border border-gray-800 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold mb-8 tracking-wider">PAYMENT METHOD</h2>
+                
+                <div className="space-y-5 mb-8">
+                  <div className="flex items-center">
+                    <input
+                      type="radio"
+                      id="card"
+                      name="payment"
+                      defaultChecked
+                      className="mr-4 h-6 w-6 text-white bg-gray-900 border-gray-700 focus:ring-white"
+                    />
+                    <label htmlFor="card" className="flex items-center">
+                      <span className="mr-3 text-lg">Credit/Debit Card</span>
+                      <div className="flex space-x-2">
+                        <div className="w-10 h-6 bg-gray-700 rounded"></div>
+                        <div className="w-10 h-6 bg-gray-700 rounded"></div>
+                        <div className="w-10 h-6 bg-gray-700 rounded"></div>
+                      </div>
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="radio"
+                      id="paypal"
+                      name="payment"
+                      className="mr-4 h-6 w-6 text-white bg-gray-900 border-gray-700 focus:ring-white"
+                    />
+                    <label htmlFor="paypal" className="flex items-center">
+                      <span className="mr-3 text-lg">PayPal</span>
+                      <div className="w-12 h-7 bg-gray-700 rounded flex items-center justify-center">
+                        <span className="text-xs">P</span>
+                      </div>
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="radio"
+                      id="apple"
+                      name="payment"
+                      className="mr-4 h-6 w-6 text-white bg-gray-900 border-gray-700 focus:ring-white"
+                    />
+                    <label htmlFor="apple" className="flex items-center">
+                      <span className="mr-3 text-lg">Apple Pay</span>
+                      <div className="w-12 h-7 bg-gray-700 rounded flex items-center justify-center">
+                        <span className="text-xs">A</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                
+                {/* Card Details */}
+                <div className="space-y-6">
+                  <div>
+                    <label htmlFor="cardNumber" className="block text-lg font-medium mb-3 tracking-wider">CARD NUMBER</label>
+                    <input
+                      type="text"
+                      id="cardNumber"
+                      name="cardNumber"
+                      placeholder="1234 5678 9012 3456"
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="expiry" className="block text-lg font-medium mb-3 tracking-wider">EXPIRY DATE</label>
+                      <input
+                        type="text"
+                        id="expiry"
+                        name="expiry"
+                        placeholder="MM/YY"
+                        className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="cvc" className="block text-lg font-medium mb-3 tracking-wider">CVC</label>
+                      <input
+                        type="text"
+                        id="cvc"
+                        name="cvc"
+                        placeholder="123"
+                        className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Account Creation */}
+              <div className="border border-gray-800 rounded-2xl p-8">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="createAccount"
+                    name="createAccount"
+                    checked={formData.createAccount}
+                    onChange={handleChange}
+                    className="mr-3 h-6 w-6 text-white bg-gray-900 border-gray-700 rounded focus:ring-white"
+                  />
+                  <label htmlFor="createAccount" className="text-gray-300 text-lg">
+                    Create an account?
+                  </label>
+                </div>
+                
+                {formData.createAccount && (
+                  <div className="mt-6">
+                    <label htmlFor="password" className="block text-lg font-medium mb-3 tracking-wider">PASSWORD</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                      placeholder="Create a password"
+                    />
+                  </div>
+                )}
+              </div>
+              
+              {/* Checkout Button */}
+              <button
+                type="submit"
+                className="w-full bg-white text-black py-5 rounded-xl font-bold text-xl hover:bg-gray-200 transition-colors tracking-wider"
+              >
+                COMPLETE ORDER
+              </button>
+            </form>
+          </div>
+          
+          {/* Order Summary */}
+          <div>
+            <div className="border border-gray-800 rounded-2xl p-8 sticky top-24 bg-gradient-to-b from-gray-900 to-black">
+              <h2 className="text-3xl font-bold mb-8 tracking-wider">ORDER SUMMARY</h2>
+              
+              {/* Order Items */}
+              <div className="space-y-6 mb-10">
+                <div className="flex">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                    <div 
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200')" }}
+                    ></div>
+                  </div>
+                  <div className="ml-6 flex-grow">
+                    <h3 className="font-bold text-lg">Premium Cotton Tee</h3>
+                    <p className="text-gray-400 text-sm">Size: M | Color: Black</p>
+                    <p className="font-bold">£29.99</p>
+                  </div>
+                  <div className="text-gray-400">x1</div>
+                </div>
+                
+                <div className="flex">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                    <div 
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=200')" }}
+                    ></div>
+                  </div>
+                  <div className="ml-6 flex-grow">
+                    <h3 className="font-bold text-lg">Urban Hoodie</h3>
+                    <p className="text-gray-400 text-sm">Size: L | Color: Grey</p>
+                    <p className="font-bold">£59.99</p>
+                  </div>
+                  <div className="text-gray-400">x2</div>
+                </div>
+              </div>
+              
+              {/* Discount Code */}
+              <div className="mb-10">
+                <div className="flex">
+                  <input 
+                    type="text" 
+                    placeholder="Discount code" 
+                    className="flex-grow bg-black border border-gray-800 rounded-l-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                  />
+                  <button className="bg-gray-800 text-white px-6 py-4 rounded-r-xl font-bold hover:bg-gray-700 transition-colors tracking-wider">
+                    APPLY
+                  </button>
+                </div>
+              </div>
+              
+              {/* Order Totals */}
+              <div className="space-y-5 mb-10">
+                <div className="flex justify-between text-lg">
+                  <span className="text-gray-400">Subtotal</span>
+                  <span>£149.97</span>
+                </div>
+                <div className="flex justify-between text-lg">
+                  <span className="text-gray-400">Shipping</span>
+                  <span>FREE</span>
+                </div>
+                <div className="flex justify-between text-lg">
+                  <span className="text-gray-400">Tax</span>
+                  <span>£29.99</span>
+                </div>
+                <div className="border-t border-gray-800 pt-5 flex justify-between font-bold text-xl">
+                  <span>Total</span>
+                  <span>£179.96</span>
+                </div>
+              </div>
+              
+              {/* Return to Cart */}
+              <Link 
+                href="/cart" 
+                className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-10 font-medium tracking-wider"
+              >
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                RETURN TO CART
+              </Link>
+              
+              {/* Secure Checkout */}
+              <div className="text-center text-gray-500">
+                <div className="flex items-center justify-center mb-3">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                  <span className="tracking-wider">SECURE CHECKOUT</span>
+                </div>
+                <p>Powered by Stripe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

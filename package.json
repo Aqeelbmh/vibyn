@@ -1,7 +1,9 @@
 {
   "name": "vibyn-ecommerce",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Premium streetwear and lifestyle clothing brand based in the UK",
+  "author": "VIBYN",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
