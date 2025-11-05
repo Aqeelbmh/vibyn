@@ -46,19 +46,19 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white py-12">
+    <div className="min-h-screen bg-white text-black py-12">
       <div className="container mx-auto px-4">
         {/* Breadcrumbs */}
         <nav className="mb-12 text-sm tracking-wider">
-          <Link href="/" className="text-gray-400 hover:text-white transition-colors">HOME</Link> / 
-          <Link href="/shop" className="text-gray-400 hover:text-white ml-2 transition-colors">SHOP</Link> / 
-          <span className="text-white ml-2">{product.name.toUpperCase()}</span>
+          <Link href="/" className="text-gray-600 hover:text-[#d4af37] transition-colors">HOME</Link> / 
+          <Link href="/shop" className="text-gray-600 hover:text-[#d4af37] ml-2 transition-colors">SHOP</Link> / 
+          <span className="text-[#d4af37] ml-2">{product.name.toUpperCase()}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Product Images */}
           <div>
-            <div className="relative aspect-square mb-6 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-square mb-6 rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
               <div 
                 className="w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: `url('${product.images[selectedImage]}')` }}
@@ -69,7 +69,7 @@ export default function ProductPage() {
               {product.images.map((image, index) => (
                 <div 
                   key={index}
-                  className={`aspect-square rounded-xl overflow-hidden cursor-pointer border-2 ${selectedImage === index ? "border-white" : "border-transparent"} transition-all hover:opacity-80`}
+                  className={`aspect-square rounded-xl overflow-hidden cursor-pointer border-2 ${selectedImage === index ? "border-[#d4af37]" : "border-gray-200"} transition-all hover:opacity-80`}
                   onClick={() => setSelectedImage(index)}
                 >
                   <div 
@@ -85,9 +85,9 @@ export default function ProductPage() {
           <div>
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h1 className="text-4xl font-bold mb-4 tracking-wider">{product.name.toUpperCase()}</h1>
+                <h1 className="text-4xl font-bold mb-4 tracking-wider text-[#d4af37]">{product.name.toUpperCase()}</h1>
                 <div className="flex items-center mb-6">
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       <svg 
                         key={i} 
@@ -99,7 +99,7 @@ export default function ProductPage() {
                       </svg>
                     ))}
                   </div>
-                  <span className="ml-3 text-gray-400">({product.reviewCount} REVIEWS)</span>
+                  <span className="ml-3 text-gray-600">({product.reviewCount} REVIEWS)</span>
                 </div>
               </div>
               
@@ -111,16 +111,16 @@ export default function ProductPage() {
               </div>
             </div>
 
-            <p className="text-gray-300 mb-10 text-lg leading-relaxed">{product.description}</p>
+            <p className="text-gray-700 mb-10 text-lg leading-relaxed">{product.description}</p>
 
             {/* Color Selection */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4 tracking-wider">COLOR: {selectedColor.toUpperCase()}</h3>
+              <h3 className="text-lg font-semibold mb-4 tracking-wider text-[#d4af37]">COLOR: {selectedColor.toUpperCase()}</h3>
               <div className="flex space-x-4">
                 {product.colors.map((color) => (
                   <button
                     key={color}
-                    className={`w-12 h-12 rounded-full border-2 ${selectedColor === color ? "border-white" : "border-gray-600"} transition-all hover:opacity-80`}
+                    className={`w-12 h-12 rounded-full border-2 ${selectedColor === color ? "border-[#d4af37]" : "border-gray-300"} transition-all hover:opacity-80`}
                     style={{ backgroundColor: color.toLowerCase() }}
                     onClick={() => setSelectedColor(color)}
                     aria-label={`Select color ${color}`}
@@ -131,39 +131,39 @@ export default function ProductPage() {
 
             {/* Size Selection */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4 tracking-wider">SIZE</h3>
+              <h3 className="text-lg font-semibold mb-4 tracking-wider text-[#d4af37]">SIZE</h3>
               <div className="grid grid-cols-5 gap-3">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    className={`py-4 px-2 border rounded-lg font-medium transition-all ${selectedSize === size ? "bg-white text-black border-white" : "border-gray-600 hover:border-white"}`}
+                    className={`py-4 px-2 border rounded-lg font-medium transition-all ${selectedSize === size ? "bg-[#d4af37] text-white border-[#d4af37]" : "border-gray-300 hover:border-[#d4af37]"}`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
                   </button>
                 ))}
               </div>
-              <Link href="#" className="inline-block mt-4 text-sm text-gray-400 hover:text-white underline tracking-wider">
+              <Link href="#" className="inline-block mt-4 text-sm text-[#d4af37] hover:text-[#b8860b] underline tracking-wider">
                 SIZE GUIDE
               </Link>
             </div>
 
             {/* Quantity */}
             <div className="mb-10">
-              <h3 className="text-lg font-semibold mb-4 tracking-wider">QUANTITY</h3>
+              <h3 className="text-lg font-semibold mb-4 tracking-wider text-[#d4af37]">QUANTITY</h3>
               <div className="flex items-center">
                 <button 
-                  className="w-12 h-12 flex items-center justify-center border border-gray-600 hover:border-white transition-all"
+                  className="w-12 h-12 flex items-center justify-center border border-gray-300 hover:border-[#d4af37] transition-all"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   aria-label="Decrease quantity"
                 >
                   -
                 </button>
-                <span className="w-16 h-12 flex items-center justify-center border-t border-b border-gray-600 text-lg">
+                <span className="w-16 h-12 flex items-center justify-center border-t border-b border-gray-300 text-lg">
                   {quantity}
                 </span>
                 <button 
-                  className="w-12 h-12 flex items-center justify-center border border-gray-600 hover:border-white transition-all"
+                  className="w-12 h-12 flex items-center justify-center border border-gray-300 hover:border-[#d4af37] transition-all"
                   onClick={() => setQuantity(quantity + 1)}
                   aria-label="Increase quantity"
                 >
@@ -175,24 +175,24 @@ export default function ProductPage() {
             {/* Add to Cart */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button
-                className="flex-1 bg-white text-black py-4 px-8 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors tracking-wider"
+                className="flex-1 bg-[#d4af37] text-white py-4 px-8 rounded-full font-bold text-lg hover:bg-[#b8860b] transition-colors tracking-wider"
                 onClick={handleAddToCart}
                 disabled={!product.inStock}
               >
                 {product.inStock ? "ADD TO CART" : "OUT OF STOCK"}
               </button>
-              <button className="flex-1 border-2 border-white py-4 px-8 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-colors tracking-wider">
+              <button className="flex-1 border-2 border-[#d4af37] text-[#d4af37] py-4 px-8 rounded-full font-bold text-lg hover:bg-[#d4af37] hover:text-white transition-colors tracking-wider">
                 ADD TO WISHLIST
               </button>
             </div>
 
             {/* Features */}
-            <div className="border-t border-gray-800 pt-10">
-              <h3 className="text-xl font-semibold mb-6 tracking-wider">PRODUCT FEATURES</h3>
+            <div className="border-t border-gray-200 pt-10">
+              <h3 className="text-xl font-semibold mb-6 tracking-wider text-[#d4af37]">PRODUCT FEATURES</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-center">
-                    <svg className="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span className="tracking-wider">{feature}</span>
@@ -205,15 +205,15 @@ export default function ProductPage() {
 
         {/* Reviews Section */}
         <div className="mt-28">
-          <h2 className="text-3xl font-bold mb-12 tracking-wider">CUSTOMER REVIEWS</h2>
+          <h2 className="text-3xl font-bold mb-12 tracking-wider text-[#d4af37]">CUSTOMER REVIEWS</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Review 1 */}
-            <div className="border border-gray-800 rounded-2xl p-8 hover:border-gray-600 transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-8 hover:border-[#d4af37] transition-colors">
               <div className="flex justify-between mb-6">
                 <div>
                   <h4 className="font-bold text-lg mb-2">Alex Johnson</h4>
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       <svg 
                         key={i} 
@@ -227,18 +227,18 @@ export default function ProductPage() {
                 </div>
                 <span className="text-gray-500">2 DAYS AGO</span>
               </div>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 The quality of this tee is exceptional! The fabric is soft and the fit is perfect. 
                 I{`'`}ve received so many compliments when wearing it. Highly recommend!
               </p>
             </div>
             
             {/* Review 2 */}
-            <div className="border border-gray-800 rounded-2xl p-8 hover:border-gray-600 transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-8 hover:border-[#d4af37] transition-colors">
               <div className="flex justify-between mb-6">
                 <div>
                   <h4 className="font-bold text-lg mb-2">Sam Wilson</h4>
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       <svg 
                         key={i} 
@@ -252,7 +252,7 @@ export default function ProductPage() {
                 </div>
                 <span className="text-gray-500">1 WEEK AGO</span>
               </div>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Fast shipping and the product arrived exactly as described. The print quality is 
                 excellent and hasn{`'`}t faded after multiple washes. Will definitely buy again!
               </p>
@@ -260,7 +260,7 @@ export default function ProductPage() {
           </div>
           
           <div className="text-center mt-12">
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-black transition-colors tracking-wider">
+            <button className="border-2 border-[#d4af37] text-[#d4af37] px-8 py-4 rounded-full font-medium hover:bg-[#d4af37] hover:text-white transition-colors tracking-wider">
               LOAD MORE REVIEWS
             </button>
           </div>

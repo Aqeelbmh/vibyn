@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#0a0a0a] to-[#2c1810]/10 text-[#f0f0f0] border-t border-[#333333]/30">
+    <footer className="bg-gradient-to-t from-white to-white text-black border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Info */}
@@ -10,12 +10,12 @@ export default function Footer() {
             <div className="flex items-center mb-6">
               <div className="relative rounded-full border-2 border-[#d4af37] p-1">
                 <div className="bg-[#d4af37] rounded-full w-10 h-10 flex items-center justify-center">
-                  <span className="text-[#2c1810] font-bold text-lg">V</span>
+                  <span className="text-white font-bold text-lg">V</span>
                 </div>
               </div>
               <h2 className="text-2xl font-bold ml-3 tracking-wider text-[#d4af37]">VIBYN</h2>
             </div>
-            <p className="text-[#f0f0f0]/70 mb-6 max-w-md">
+            <p className="text-black/70 mb-6 max-w-md">
               Premium streetwear and lifestyle clothing brand based in the UK. 
               Express your unique vibe with our high-quality tees, hoodies, and custom DTF designs.
             </p>
@@ -42,11 +42,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6 text-[#d4af37] tracking-wide">SHOP</h3>
             <ul className="space-y-3">
-              <li><Link href="/shop" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">All Products</Link></li>
-              <li><Link href="/shop?tshirts" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">T-Shirts</Link></li>
-              <li><Link href="/shop?hoodies" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Hoodies</Link></li>
-              <li><Link href="/dtf-design" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">DTF Designs</Link></li>
-              <li><Link href="/shop?accessories" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Accessories</Link></li>
+              <li><Link href="/shop" className="text-black/70 hover:text-[#d4af37] transition-colors">All Products</Link></li>
+              <li><Link href="/shop?tshirts" className="text-black/70 hover:text-[#d4af37] transition-colors">T-Shirts</Link></li>
+              <li><Link href="/shop?hoodies" className="text-black/70 hover:text-[#d4af37] transition-colors">Hoodies</Link></li>
+              <li><Link href="/dtf-design" className="text-black/70 hover:text-[#d4af37] transition-colors">DTF Designs</Link></li>
+              <li><Link href="/shop?accessories" className="text-black/70 hover:text-[#d4af37] transition-colors">Accessories</Link></li>
               <li><Link href="/shop?new" className="text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium">New Arrivals</Link></li>
             </ul>
           </div>
@@ -55,31 +55,31 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6 text-[#d4af37] tracking-wide">BRAND STORY</h3>
             <ul className="space-y-3">
-              <li><Link href="/about" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Our Origin Story</Link></li>
-              <li><Link href="/about#mission" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Our Mission</Link></li>
-              <li><Link href="/about#values" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Core Values</Link></li>
-              <li><Link href="/about#team" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Meet Our Team</Link></li>
-              <li><Link href="/contact" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Contact Us</Link></li>
-              <li><Link href="/privacy-policy" className="text-[#f0f0f0]/70 hover:text-[#d4af37] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/about" className="text-black/70 hover:text-[#d4af37] transition-colors">Our Origin Story</Link></li>
+              <li><Link href="/about#mission" className="text-black/70 hover:text-[#d4af37] transition-colors">Our Mission</Link></li>
+              <li><Link href="/about#values" className="text-black/70 hover:text-[#d4af37] transition-colors">Core Values</Link></li>
+              <li><Link href="/about#team" className="text-black/70 hover:text-[#d4af37] transition-colors">Meet Our Team</Link></li>
+              <li><Link href="/contact" className="text-black/70 hover:text-[#d4af37] transition-colors">Contact Us</Link></li>
+              <li><Link href="/privacy-policy" className="text-black/70 hover:text-[#d4af37] transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-6 text-[#d4af37] tracking-wide">STAY UPDATED</h3>
-            <p className="text-[#f0f0f0]/70 mb-4">
+            <p className="text-black/70 mb-4">
               Subscribe to get special offers, free giveaways, and new drops.
             </p>
             <form className="flex flex-col space-y-3">
               <input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-[#1a1a1a] border border-[#333333] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#d4af37] text-[#f0f0f0] placeholder-[#f0f0f0]/50"
+                className="bg-white border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#d4af37] text-black placeholder-black/50"
                 aria-label="Email for newsletter"
               />
               <button 
                 type="submit"
-                className="bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#2c1810] rounded-lg px-4 py-3 font-medium hover:from-[#b8860b] hover:to-[#8b4513] transition-all shadow-lg hover:shadow-[#d4af37]/20"
+                className="bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-white rounded-lg px-4 py-3 font-medium hover:from-[#b8860b] hover:to-[#8b4513] transition-all shadow-lg hover:shadow-[#d4af37]/20"
               >
                 Subscribe
               </button>
@@ -87,7 +87,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-[#333333]/30 mt-16 pt-8 text-center text-[#f0f0f0]/50 text-sm">
+        <div className="border-t border-gray-200 mt-16 pt-8 text-center text-black/50 text-sm">
           <p>&copy; {new Date().getFullYear()} VIBYN. All rights reserved. Crafted with passion in the UK.</p>
         </div>
       </div>

@@ -88,12 +88,12 @@ export default function ShopPage() {
     : products.filter(product => product.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-black text-white py-12">
+    <div className="min-h-screen bg-white text-black py-12">
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider">SHOP COLLECTION</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider text-[#d4af37]">SHOP COLLECTION</h1>
+          <p className="text-gray-700 max-w-2xl mx-auto text-lg">
             Discover our premium streetwear collection featuring high-quality tees, hoodies, and custom DTF designs.
           </p>
         </div>
@@ -103,25 +103,25 @@ export default function ShopPage() {
           {/* Category Filters */}
           <div className="flex flex-wrap gap-3">
             <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "all" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"}`}
+              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "all" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
               onClick={() => setSelectedCategory("all")}
             >
               ALL
             </button>
             <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "tshirts" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"}`}
+              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "tshirts" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
               onClick={() => setSelectedCategory("tshirts")}
             >
               T-SHIRTS
             </button>
             <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "hoodies" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"}`}
+              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "hoodies" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
               onClick={() => setSelectedCategory("hoodies")}
             >
               HOODIES
             </button>
             <button 
-              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "dtf" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"}`}
+              className={`px-6 py-3 rounded-full font-medium tracking-wider ${selectedCategory === "dtf" ? "bg-[#d4af37] text-white" : "bg-gray-100 text-black hover:bg-gray-200"}`}
               onClick={() => setSelectedCategory("dtf")}
             >
               DTF DESIGNS
@@ -130,9 +130,9 @@ export default function ShopPage() {
 
           {/* Sorting */}
           <div className="flex items-center gap-3">
-            <span className="text-gray-400 font-medium">SORT BY:</span>
+            <span className="text-gray-700 font-medium">SORT BY:</span>
             <select 
-              className="bg-gray-900 text-white border border-gray-800 rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-white font-medium"
+              className="bg-white text-black border border-gray-300 rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#d4af37] font-medium"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               aria-label="Sort products by"
@@ -148,10 +148,10 @@ export default function ShopPage() {
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-32">
-            <h3 className="text-2xl font-bold mb-6">NO PRODUCTS FOUND</h3>
-            <p className="text-gray-400 mb-10">Try selecting a different category</p>
+            <h3 className="text-2xl font-bold mb-6 text-[#d4af37]">NO PRODUCTS FOUND</h3>
+            <p className="text-gray-600 mb-10">Try selecting a different category</p>
             <button 
-              className="bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-gray-200 transition-colors tracking-wider"
+              className="bg-[#d4af37] text-white px-8 py-4 rounded-full font-medium hover:bg-[#b8860b] transition-colors tracking-wider"
               onClick={() => setSelectedCategory("all")}
             >
               VIEW ALL PRODUCTS
@@ -161,7 +161,7 @@ export default function ShopPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {filteredProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="relative overflow-hidden rounded-2xl mb-6">
+                <div className="relative overflow-hidden rounded-2xl mb-6 border border-gray-200">
                   <div 
                     className="h-80 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                     style={{ backgroundImage: `url('${product.image}')` }}
@@ -169,7 +169,7 @@ export default function ShopPage() {
                   
                   {/* Badges */}
                   {product.isNew && (
-                    <div className="absolute top-4 right-4 bg-white text-black text-sm font-bold px-4 py-2 rounded-full tracking-wider">
+                    <div className="absolute top-4 right-4 bg-[#d4af37] text-white text-sm font-bold px-4 py-2 rounded-full tracking-wider">
                       NEW
                     </div>
                   )}
@@ -180,19 +180,19 @@ export default function ShopPage() {
                   )}
                   
                   {/* Quick Add to Cart */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:bg-opacity-40">
-                    <button className="bg-white text-black px-8 py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0 tracking-wider">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:bg-opacity-20">
+                    <button className="bg-[#d4af37] text-white px-8 py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0 tracking-wider">
                       QUICK ADD
                     </button>
                   </div>
                 </div>
                 
                 <Link href={`/product/${product.id}`} className="block">
-                  <h3 className="font-bold text-lg mb-1">{product.name}</h3>
-                  <p className="text-gray-400">
+                  <h3 className="font-bold text-lg mb-1 text-black">{product.name}</h3>
+                  <p className="text-gray-700">
                     {product.originalPrice && (
                       <>
-                        <span className="line-through text-gray-600 mr-2">£{product.originalPrice.toFixed(2)}</span>
+                        <span className="line-through text-gray-400 mr-2">£{product.originalPrice.toFixed(2)}</span>
                       </>
                     )}
                     £{product.price.toFixed(2)}
@@ -205,7 +205,7 @@ export default function ShopPage() {
 
         {/* Load More Button */}
         <div className="text-center mt-20">
-          <button className="border-2 border-white text-white px-10 py-4 rounded-full font-medium hover:bg-white hover:text-black transition-colors tracking-wider">
+          <button className="border-2 border-[#d4af37] text-[#d4af37] px-10 py-4 rounded-full font-medium hover:bg-[#d4af37] hover:text-white transition-colors tracking-wider">
             LOAD MORE
           </button>
         </div>

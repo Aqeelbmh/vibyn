@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex bg-[#0a0a0a] text-[#f0f0f0] font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex bg-white text-black font-sans`}
         suppressHydrationWarning={true}
       >
         <SidebarProvider>

@@ -45,17 +45,17 @@ export default function CartPage() {
   const total = subtotal + shipping + tax;
 
   return (
-    <div className="min-h-screen bg-black text-white py-20">
+    <div className="min-h-screen bg-white text-black py-20">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold mb-16 tracking-widest">YOUR CART</h1>
+        <h1 className="text-5xl font-bold mb-16 tracking-widest text-[#d4af37]">YOUR CART</h1>
         
         {cartItems.length === 0 ? (
           <div className="text-center py-32">
-            <h2 className="text-3xl font-bold mb-6 tracking-wider">YOUR CART IS EMPTY</h2>
-            <p className="text-gray-400 mb-12 text-xl">Looks like you haven{`'`}t added anything to your cart yet</p>
+            <h2 className="text-3xl font-bold mb-6 tracking-wider text-[#d4af37]">YOUR CART IS EMPTY</h2>
+            <p className="text-gray-700 mb-12 text-xl">Looks like you haven{`'`}t added anything to your cart yet</p>
             <Link 
               href="/shop" 
-              className="inline-block bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors tracking-wider"
+              className="inline-block bg-[#d4af37] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#b8860b] transition-colors tracking-wider"
             >
               CONTINUE SHOPPING
             </Link>
@@ -66,7 +66,7 @@ export default function CartPage() {
             <div className="lg:col-span-2">
               <div className="space-y-8">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="flex border border-gray-800 rounded-2xl p-8 hover:border-gray-600 transition-colors">
+                  <div key={item.id} className="flex border border-gray-200 rounded-2xl p-8 hover:border-[#d4af37] transition-colors">
                     <div className="w-32 h-32 rounded-xl overflow-hidden flex-shrink-0">
                       <div 
                         className="w-full h-full bg-cover bg-center"
@@ -78,11 +78,11 @@ export default function CartPage() {
                       <div className="flex justify-between">
                         <div>
                           <h3 className="font-bold text-xl mb-2">{item.name}</h3>
-                          <p className="text-gray-400 text-lg">Size: {item.size} | Color: {item.color}</p>
+                          <p className="text-gray-600 text-lg">Size: {item.size} | Color: {item.color}</p>
                         </div>
                         <button 
                           onClick={() => removeItem(item.id)}
-                          className="text-gray-500 hover:text-white transition-colors"
+                          className="text-gray-500 hover:text-[#d4af37] transition-colors"
                           aria-label="Remove item"
                         >
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,17 +94,17 @@ export default function CartPage() {
                       <div className="flex items-center justify-between mt-6">
                         <div className="flex items-center">
                           <button 
-                            className="w-12 h-12 flex items-center justify-center border border-gray-600 hover:border-white transition-colors"
+                            className="w-12 h-12 flex items-center justify-center border border-gray-300 hover:border-[#d4af37] transition-colors"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             aria-label="Decrease quantity"
                           >
                             -
                           </button>
-                          <span className="w-16 h-12 flex items-center justify-center border-t border-b border-gray-600 text-lg">
+                          <span className="w-16 h-12 flex items-center justify-center border-t border-b border-gray-300 text-lg">
                             {item.quantity}
                           </span>
                           <button 
-                            className="w-12 h-12 flex items-center justify-center border border-gray-600 hover:border-white transition-colors"
+                            className="w-12 h-12 flex items-center justify-center border border-gray-300 hover:border-[#d4af37] transition-colors"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             aria-label="Increase quantity"
                           >
@@ -122,7 +122,7 @@ export default function CartPage() {
               <div className="mt-12 flex justify-between">
                 <Link 
                   href="/shop" 
-                  className="inline-flex items-center text-gray-400 hover:text-white transition-colors font-medium tracking-wider"
+                  className="inline-flex items-center text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium tracking-wider"
                 >
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -131,7 +131,7 @@ export default function CartPage() {
                 </Link>
                 <button 
                   onClick={() => setCartItems([])}
-                  className="text-gray-400 hover:text-white transition-colors font-medium tracking-wider"
+                  className="text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium tracking-wider"
                 >
                   CLEAR CART
                 </button>
@@ -140,23 +140,23 @@ export default function CartPage() {
             
             {/* Order Summary */}
             <div>
-              <div className="border border-gray-800 rounded-2xl p-8 sticky top-24 bg-gradient-to-b from-gray-900 to-black">
-                <h2 className="text-3xl font-bold mb-8 tracking-wider">ORDER SUMMARY</h2>
+              <div className="border border-gray-200 rounded-2xl p-8 sticky top-24 bg-gradient-to-b from-white to-gray-50">
+                <h2 className="text-3xl font-bold mb-8 tracking-wider text-[#d4af37]">ORDER SUMMARY</h2>
                 
                 <div className="space-y-6 mb-10">
                   <div className="flex justify-between text-lg">
-                    <span className="text-gray-400">Subtotal</span>
+                    <span className="text-gray-700">Subtotal</span>
                     <span>£{subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-lg">
-                    <span className="text-gray-400">Shipping</span>
+                    <span className="text-gray-700">Shipping</span>
                     <span>{shipping === 0 ? "FREE" : `£{shipping.toFixed(2)}`}</span>
                   </div>
                   <div className="flex justify-between text-lg">
-                    <span className="text-gray-400">Tax</span>
+                    <span className="text-gray-700">Tax</span>
                     <span>£{tax.toFixed(2)}</span>
                   </div>
-                  <div className="border-t border-gray-800 pt-6 flex justify-between font-bold text-xl">
+                  <div className="border-t border-gray-200 pt-6 flex justify-between font-bold text-xl">
                     <span>Total</span>
                     <span>£{total.toFixed(2)}</span>
                   </div>
@@ -164,23 +164,23 @@ export default function CartPage() {
                 
                 <Link 
                   href="/checkout" 
-                  className="block w-full bg-white text-black text-center py-5 rounded-xl font-bold text-lg hover:bg-gray-200 transition-colors mb-6 tracking-wider"
+                  className="block w-full bg-[#d4af37] text-white text-center py-5 rounded-xl font-bold text-lg hover:bg-[#b8860b] transition-colors mb-6 tracking-wider"
                 >
                   PROCEED TO CHECKOUT
                 </Link>
                 
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-600">
                   <p className="mb-2">or</p>
-                  <button className="mt-2 text-gray-400 hover:text-white transition-colors font-medium tracking-wider">
+                  <button className="mt-2 text-[#d4af37] hover:text-[#b8860b] transition-colors font-medium tracking-wider">
                     Pay with
                   </button>
                   <div className="flex justify-center space-x-6 mt-5">
-                    <button className="flex items-center justify-center w-14 h-14 border border-gray-700 rounded-xl hover:border-white transition-colors" aria-label="PayPal">
+                    <button className="flex items-center justify-center w-14 h-14 border border-gray-300 rounded-xl hover:border-[#d4af37] transition-colors" aria-label="PayPal">
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M7.2 18c-.3-.3-.5-.7-.5-1.2V8.5c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2l8.2 8.2V7.8c0-.4.3-.8.8-1 .4-.2.9-.1 1.2.2.3.3.5.7.5 1.2v8.3c0 .4-.3.8-.8 1-.4.2-.9.1-1.2-.2L9 9.1v8.1c0 .4-.3.8-.8 1-.4.2-.9.1-1.2-.2z"/>
                       </svg>
                     </button>
-                    <button className="flex items-center justify-center w-14 h-14 border border-gray-700 rounded-xl hover:border-white transition-colors" aria-label="Apple Pay">
+                    <button className="flex items-center justify-center w-14 h-14 border border-gray-300 rounded-xl hover:border-[#d4af37] transition-colors" aria-label="Apple Pay">
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17.1 15.4c.1.9-.1 1.9-.7 2.7-.5.7-1.3 1.3-2.3 1.5-1 .2-2.1 0-3-.5-.9-.5-1.6-1.3-2-2.3-.4-1-.3-2.1.2-3 .5-.9 1.3-1.6 2.3-2 .4-.2.9-.3 1.3-.3.3 0 .6 0 .9.1.9.2 1.7.7 2.3 1.4.6.7.9 1.6.9 2.5zm-3.6-8c.3-.4.5-.9.5-1.5 0-.6-.2-1.1-.5-1.5-.3-.4-.8-.6-1.3-.6-.5 0-1 .2-1.3.6-.3.4-.5.9-.5 1.5 0 .6.2 1.1.5 1.5.3.4.8.6 1.3.6.5 0 1-.2 1.3-.6zm6.5 6.1c0-2.1-.6-3.9-1.8-5.4-1.2-1.5-2.8-2.3-4.8-2.3-1.2 0-2.3.3-3.3.9-1 .6-1.8 1.4-2.4 2.4-.6 1-.9 2.1-.9 3.3 0 .9.2 1.7.5 2.5.3.8.8 1.5 1.4 2 .6.5 1.3.9 2.1 1.2.8.3 1.6.4 2.5.4.9 0 1.7-.1 2.5-.4.8-.3 1.5-.7 2.1-1.2.6-.5 1.1-1.2 1.4-2 .3-.8.5-1.6.5-2.5zm-3.6 0c0 1.3-.3 2.3-.9 3.1-.6.8-1.4 1.2-2.4 1.2-.9 0-1.7-.4-2.4-1.2-.6-.8-.9-1.8-.9-3.1 0-1.3.3-2.3.9-3.1.6-.8 1.4-1.2 2.4-1.2.9 0 1.7.4 2.4 1.2.6.8.9 1.8.9 3.1z"/>
                       </svg>
@@ -189,15 +189,15 @@ export default function CartPage() {
                 </div>
               </div>
               
-              <div className="mt-8 bg-gradient-to-b from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h3 className="font-bold text-xl mb-5 tracking-wider">HAVE A DISCOUNT CODE?</h3>
+              <div className="mt-8 bg-gradient-to-b from-white to-gray-50 rounded-2xl p-8 border border-gray-200">
+                <h3 className="font-bold text-xl mb-5 tracking-wider text-[#d4af37]">HAVE A DISCOUNT CODE?</h3>
                 <div className="flex">
                   <input 
                     type="text" 
                     placeholder="Enter code" 
-                    className="flex-grow bg-black border border-gray-800 rounded-l-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    className="flex-grow bg-white border border-gray-300 rounded-l-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#d4af37] text-lg text-black"
                   />
-                  <button className="bg-white text-black px-6 py-4 rounded-r-xl font-bold hover:bg-gray-200 transition-colors tracking-wider">
+                  <button className="bg-[#d4af37] text-white px-6 py-4 rounded-r-xl font-bold hover:bg-[#b8860b] transition-colors tracking-wider">
                     APPLY
                   </button>
                 </div>

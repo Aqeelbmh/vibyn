@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f0f0f0;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
   --primary: #d4af37;
   --primary-dark: #b8860b;
-  --secondary: #2c1810;
+  --secondary: #f5f5f5;
   --accent: #8b4513;
-  --card-bg: #1a1a1a;
-  --border: #333333;
+  --card-bg: #ffffff;
+  --border: #e5e5e5;
 }
 
 @theme inline {
@@ -47,7 +47,7 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85) 0%, rgba(44, 24, 16, 0.95) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(245, 245, 245, 0.95) 100%);
   z-index: 10;
   border-radius: 1.5rem;
 }
@@ -95,7 +95,7 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -136,12 +136,13 @@ input:focus, select:focus, textarea:focus {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
   border-color: var(--primary);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* Product image hover */
@@ -201,7 +202,7 @@ h1, h2, h3, h4 {
 /* Luxury button styling */
 .luxury-button {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: var(--secondary);
+  color: white;
   border: none;
   font-weight: bold;
   transition: all 0.3s ease;
@@ -216,11 +217,11 @@ h1, h2, h3, h4 {
 
 /* Premium shadows */
 .premium-shadow {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
 .premium-shadow-lg {
-  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.15);
 }
 
 /* Smooth transitions */
@@ -239,16 +240,16 @@ h1, h2, h3, h4 {
 
 /* Premium card styling */
 .premium-card {
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid rgba(229, 229, 229, 0.8);
   border-radius: 1rem;
 }
 
 /* Animated background */
 .animated-bg {
-  background: linear-gradient(-45deg, #0a0a0a, #2c1810, #0a0a0a, #1a1a1a);
+  background: linear-gradient(-45deg, #ffffff, #f5f5f5, #ffffff, #f0f0f0);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
